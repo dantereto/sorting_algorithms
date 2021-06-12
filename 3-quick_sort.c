@@ -9,20 +9,26 @@ void swap(int *xp, int *yp)
 
 int partition(int *array, size_t size,  int lo, int hi) 
 {
-  int pivot = array[hi];
-  int i = (lo - 1);
-  int j;
-  for (j = lo; j < hi - 1; j++)
+  int i = 0, j;
+  int pivot = 0;
+  i = (lo - 1);
+  pivot = array[hi];
+  for (j = lo; j <= hi - 1; j++)
     {
-      if (array[j] <= pivot)
-        {
+      if (array[j] < pivot)
+	{
 	  i++;
 	  swap(&array[i], &array[j]);
-	  print_array(array, size);
-        }
+	  if (i != j)
+	    print_array(array, size);
+	}
     }
-  swap(&array[i + 1], &array[hi]);
-  print_array(array, size);
+  if (array[i + 1] != array[hi])
+    {
+      swap(&array[i + 1], &array[hi]);
+      if (i + 1 != j)
+	print_array(array, size);
+    }
   return (i + 1);
 }
 void sort_lomuto(int *array,size_t size, int lo, int hi)
