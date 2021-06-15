@@ -9,19 +9,19 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *i = *list;
 
-	if (list == '\0' || (*list)->next == '\0')
+	if (list == NULL || (*list)->next == NULL)
 		return;
 	while (i)
 	{
-		while (i->prev != '\0' && i->prev->n > i->n)
+		while (i->prev != NULL && i->prev->n > i->n)
 		{
 			i->prev->next = i->next;
-			if (i->next != '\0')
+			if (i->next != NULL)
 				i->next->prev = i->prev;
 			i->next = i->prev;
 			i->prev = i->next->prev;
 			i->next->prev = i;
-			if (i->prev != '\0')
+			if (i->prev != NULL)
 				i->prev->next = i;
 			else
 				*list = i;
